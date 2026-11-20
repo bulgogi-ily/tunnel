@@ -50,6 +50,22 @@ At the end it asks whether to install **Full VPN** mode, which needs your Mac pa
 
 That's it. Open **Tunnel** from `~/Applications`.
 
+### 2b. On Windows (10/11, x64)
+
+Open **PowerShell** (Start → type "PowerShell") and paste, with your link:
+
+```powershell
+powershell -ExecutionPolicy Bypass -c "& ([scriptblock]::Create((irm https://raw.githubusercontent.com/bulgogi-ily/tunnel/main/install.ps1))) 'vless://…'"
+```
+
+No admin rights are needed. It installs to `%LOCALAPPDATA%\Tunnel`, starts the proxy at login, and puts three shortcuts on the desktop:
+
+| Shortcut | What it does |
+|---|---|
+| **Tunnel ON** | Sends browsers and most apps through the tunnel |
+| **Tunnel FULL VPN** | Sends every app through, including games (click Yes on the admin prompt) |
+| **Tunnel OFF** | Back to normal internet |
+
 > If you're already behind the firewall and can't reach your server to set it up, connect through a phone hotspot (or any other network) just for step 1.
 
 ---
@@ -135,6 +151,7 @@ Run it yourself: `bash tests/latency-test.sh`
 
 ```
 install.sh                 One-command Mac installer (downloads the release bundle)
+install.ps1                One-command Windows installer
 server/install-server.sh   One-command server installer (Xray VLESS+REALITY)
 client/install-vpn.sh      One-time root install for full-VPN mode (also inside the bundle)
 gui/Tunnel.swift           SwiftUI control app source
@@ -147,6 +164,7 @@ tests/latency-test.sh      No tunnel vs. proxy vs. full VPN latency test
 | Asset | Contents |
 |---|---|
 | `tunnel-macos-arm64.zip` / `tunnel-macos-x86_64.zip` | `Tunnel.app` (universal), `xray`, `sing-box`, geo data, `install-vpn.sh`, licenses |
+| `tunnel-windows-x64.zip` | `xray.exe`, `sing-box.exe`, geo data, licenses (used by `install.ps1`) |
 | `xray-linux-x86_64.zip` / `xray-linux-arm64.zip` | Xray server binaries (unmodified upstream) |
 | `SHA256SUMS` | Checksums the installers verify against |
 
