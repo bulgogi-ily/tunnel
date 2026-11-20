@@ -19,7 +19,7 @@ die() { printf '\033[31mERROR: %s\033[0m\n' "$*" >&2; exit 1; }
 # ---------- 1. connection link ----------
 LINK="${1:-${TUNNEL_LINK:-}}"
 if [ -z "$LINK" ]; then
-  [ -r /dev/tty ] || die "Pass your vless:// link as an argument."
+  (exec </dev/tty) 2>/dev/null || die "Pass your vless:// link as an argument."
   read -r -p "Paste your vless:// link (printed by the server installer): " LINK </dev/tty
 fi
 [[ "$LINK" == vless://* ]] || die "That doesn't look like a vless:// link."
@@ -146,7 +146,7 @@ else printf '\033[33mProxy test failed. Check the server is running and TCP %s i
 
 # ---------- 6. optional full-VPN mode ----------
 ans=n
-if [ -r /dev/tty ]; then
+if (exec </dev/tty) 2>/dev/null; then
   read -r -p "Install FULL VPN mode too (routes every app, incl. games/VNC; needs your Mac password)? [y/N] " ans </dev/tty || true
 fi
 if [[ "$ans" =~ ^[Yy] ]]; then sudo bash "$DEST/install-vpn.sh"
