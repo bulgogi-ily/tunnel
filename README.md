@@ -1,8 +1,8 @@
 # Tunnel
 
-A self-hosted, low-latency tunnel that gets SSH, VNC, games and everything else through restrictive networks that use deep packet inspection (DPI). It comes with a native macOS control app styled like Terminal's **Pro** theme.
+Built to bypass firewalls.
 
-I built this because my dorm network blocked SSH and RealVNC, which I needed for a robotics project, and plain Shadowsocks got detected and dropped.
+A self-hosted, low-latency tunnel that gets SSH, VNC, games and everything else through restrictive networks that use deep packet inspection (DPI). It comes with a native macOS control app styled like Terminal's **Pro** theme.
 
 **Everything you need is in this repo.** The server binary, the Mac client binaries and the app all come from this repo's [Releases](../../releases), and the installers verify them against SHA-256 checksums. You don't need any other website.
 
