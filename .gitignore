@@ -1,0 +1,20 @@
+# Real configs contain your server IP, UUID and keys — never commit them
+config.json
+tun.json
+*.local.json
+.env
+
+# Binaries & build output
+xray
+sing-box
+*.zip
+*.tar.gz
+*.app
+gui/icongen
+*.icns
+*.iconset/
+
+# Backups / logs / macOS
+*.bak
+*.log
+.DS_Store
